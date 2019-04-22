@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask, render_template, redirect, request, url_for
+from flask import Flask, render_template, redirect, request, url_for, send_from_directory
 
 app = Flask(__name__)
 
@@ -23,6 +23,10 @@ def save_image():
     archive.save(os.path.join(upload_path, f_name))
 
     return redirect(url_for('index'))
+
+@app.route('/uploads/<name_archive>')
+def image(name_archive):
+    return send_from_directory('uploads',name_archive) # We return archive of directory specific
 
 if __name__ == "__main__":
     app.run(debug=True,port=5380)

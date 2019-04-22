@@ -14,12 +14,22 @@
         <div class="container-fluid">
             <form class="form-inline" action="{{ url_for('save_image') }}" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
+                    <figure>
+                        <img src="{{ url_for('image',name_archive='') }}" width="100px">
+                        <img src="" width="100px">
+                        <figcaption>
+                            <label>
+                                <input class="form-control" type="file" name="image" accept=".jpg" required>
+                            </label>
+                        </figcaption>
+                    </figure>
+                </div>
+                <div class="form-group">
                     <label class="sr-only" >Name:</label>
                     <input class="form-control" type="text" name="name" title="name" required>
                 </div>
                   <div class="form-group">
                     <label class="sr-only">Select of Image:</label>
-                    <input class="form-control" type="file" name="image" accept=".jpg" required>
                 </div>
                 <button class="form-control" type="submit" class="btn btn-default">Submit</button>
             </form>
